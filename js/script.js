@@ -85,6 +85,7 @@ function largest2(){
   }
   output_str += `${largest_num}`;
   alert(output_str);
+  console.log(output_str);
   answer_list.appendChild(document.createElement('li')).innerHTML = output_str;
 }
 
@@ -98,6 +99,7 @@ function evenOdd() {
     } else {
       li_str = output_str + `${i} is odd.`;
     }
+    console.log(li_str);
     ol.appendChild(document.createElement('li')).innerHTML = li_str;
   }
 }

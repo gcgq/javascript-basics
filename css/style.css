@@ -3,6 +3,7 @@
 }
  ul li{
    display: inline-block;
+   margin: 5px;
  }
 
  ul li ol li{
