@@ -115,6 +115,7 @@ function fizzbuzz(){
     if ((i % 5) == 0){
       li_str += "Buzz";
     }
+    console.log(`${i}: ${li_str}`);
     ol.appendChild(document.createElement('li')).innerHTML = li_str;
   }
 }
@@ -138,10 +139,10 @@ function multiplesOf3(){
   console.log(total_str);
 }
 
-function pyramid1(){
+function pyramid(){
   var pre = answer_list.appendChild(document.createElement('li'))
                       .appendChild(document.createElement('pre'));
-  var number_array = [1, 2, 3, 4, 5];
+  var number_array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   var lines = [];
   for (var j = 0; j < number_array.length; j++) {
     line_array = [];
@@ -159,16 +160,16 @@ function pyramid1(){
   var pre_line = "<strong>pyramid1()</strong>&#10;";
   for(var i=0; i < lines.length; i++){
     console.log(lines[i]);
-    lines[i] += "&#10;" //put a line break at the end of each line
+    lines[i] += "&#10;"; //put a line break at the end of each line
     pre_line += lines[i];
   }
   pre.innerHTML = pre_line;
 }
 
-function diamond1(){
+function diamond(){
   var pre = answer_list.appendChild(document.createElement('li'))
                       .appendChild(document.createElement('pre'));
-  var number_array = [1, 2, 3, 4, 5];
+  var number_array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   var lines = [];
   for (var j = 0; j < number_array.length; j++) {
     line_array = [];
@@ -188,98 +189,102 @@ function diamond1(){
   var pre_line = "<strong>diamond1()</strong>&#10;";
   for(var i=0; i < lines.length; i++){
     console.log(lines[i]);
+    lines[i] += "&#10;"; //put a line break at the end of each line
+    pre_line += lines[i];
+  }
+  pre.innerHTML = pre_line;
+}
+
+function pyramid2(){
+  var pre = answer_list.appendChild(document.createElement('li'))
+                      .appendChild(document.createElement('pre'));
+  var range = 0;
+  var number_array = [];
+  var lines = [];
+  while( 0 >= range || range > 99){
+    range = prompt("Enter a number between 1-99");
+  }
+  for (var i = 0; i < range; i++) {
+    number_array[i] = i + 1;
+  }
+  for (var j = 0; j < number_array.length; j++) {
+    line_array = [];
+    for( var i = 0; i < number_array.length; i++){
+      if( j >= i){
+        line_array[(number_array.length-1)-i] = `${number_array[j-i]}`;
+        line_array[(number_array.length-1)+i] = `${number_array[j-i]}`;
+        if( number_array[i] < 10 && range > 9){
+          line_array[(number_array.length-1)-i] += " ";
+          line_array[(number_array.length-1)+i] += " ";
+        }
+      } else {
+        line_array[(number_array.length-1)-i] = " ";
+        line_array[(number_array.length-1)+i] = " ";
+        if( range > 9){
+          line_array[(number_array.length-1)-i] += " ";
+          line_array[(number_array.length-1)+i] += " ";
+        }
+      }
+    }
+    var joined_line = line_array.join("");
+    lines[j] = joined_line;
+  }
+  var pre_line = "<strong>diamond2()</strong>&#10;";
+  for(var i=0; i < lines.length; i++){
+    console.log(lines[i]);
     lines[i] += "&#10;" //put a line break at the end of each line
     pre_line += lines[i];
   }
   pre.innerHTML = pre_line;
 }
 
-
-//these don't work; the whitespace gets borked on join(), I think.
-
-// function pyramid2(){
-//   var pre = answer_list.appendChild(document.createElement('li'))
-//                       .appendChild(document.createElement('pre'));
-//   var range = 0;
-//   var number_array = [];
-//   var lines = [];
-//   while( 0 >= range || range > 99){
-//     range = prompt("Enter a number between 1-99");
-//   }
-//   for (var i = 0; i < range; i++) {
-//     number_array[i] = i + 1;
-//     if( i < 10 && range > 9){
-//       number_array[i] = ` ${number_array[i]}`;
-//     }
-//   }
-//   for (var j = 0; j < number_array.length; j++) {
-//     line_array = [];
-//     for( var i = 0; i < number_array.length; i++){
-//       if( j >= i){
-//         line_array[(number_array.length-1)-i] = `${number_array[j-i]}`;
-//         line_array[(number_array.length-1)+i] = `${number_array[j-i]}`;
-//       } else {
-//         line_array[(number_array.length-1)-i] = " ";
-//         line_array[(number_array.length-1)+i] = " ";
-//         if( i < 10 && range > 9){
-//           line_array[(number_array.length-1)-i] += " ";
-//           line_array[(number_array.length-1)+i] += " ";
-//         }
-//       }
-//     }
-//     lines[j] = line_array.join("");
-//   }
-//   var pre_line = "<strong>pyramid2()</strong>&#10;";
-//   for(var i=0; i < lines.length; i++){
-//     console.log(lines[i]);
-//     lines[i] += "&#10;" //put a line break at the end of each line
-//     pre_line += lines[i];
-//   }
-//   pre.innerHTML = pre_line;
-// }
-//
-// function diamond2(){
-//   var pre = answer_list.appendChild(document.createElement('li'))
-//                       .appendChild(document.createElement('pre'));
-//   var range = 0;
-//   var number_array = [];
-//   var lines = [];
-//   while( 0 >= range || range > 99){
-//     range = prompt("Enter a number between 1-99");
-//   }
-//   for (var i = 0; i < range; i++) {
-//     number_array[i] = i + 1;
-//     if( i < 10 && range > 9){
-//       number_array[i] = number_array[i].toString().concat(" ");
-//     }
-//   }
-//   for (var j = 0; j < number_array.length; j++) {
-//     line_array = [];
-//     for( var i = 0; i < number_array.length; i++){
-//       if( j >= i){
-//         line_array[(number_array.length-1)-i] = `${number_array[j-i]}`;
-//         line_array[(number_array.length-1)+i] = `${number_array[j-i]}`;
-//       } else {
-//         line_array[(number_array.length-1)-i] = " ";
-//         line_array[(number_array.length-1)+i] = " ";
-//         if( number_array[i] < 10 && range > 9){
-//           line_array[(number_array.length-1)-i] += " ";
-//           line_array[(number_array.length-1)+i] += " ";
-//         }
-//       }
-//     }
-//     var joined_line = line_array.join("");
-//     lines[j] = joined_line;
-//     lines[(number_array.length*2) - 2 - j] = joined_line;
-//   }
-//   var pre_line = "<strong>diamond2()</strong>&#10;";
-//   for(var i=0; i < lines.length; i++){
-//     console.log(lines[i]);
-//     lines[i] += "&#10;" //put a line break at the end of each line
-//     pre_line += lines[i];
-//   }
-//   pre.innerHTML = pre_line;
-// }
+function diamond2(){
+  var pre = answer_list.appendChild(document.createElement('li'))
+                      .appendChild(document.createElement('pre'));
+  var range = 0;
+  var number_array = [];
+  var lines = [];
+  while( 0 >= range || range > 99){
+    range = prompt("Enter a number between 1-99");
+  }
+  for (var i = 0; i < range; i++) {
+    number_array[i] = i + 1;
+  }
+  for (var j = 0; j < number_array.length; j++) {
+    line_array = [];
+    for( var i = 0; i < number_array.length; i++){
+      if( j >= i){
+        line_array[(number_array.length-1)-i] = `${number_array[j-i]}`;
+        line_array[(number_array.length-1)+i] = `${number_array[j-i]}`;
+        if( number_array[i] < 10 && range > 9){
+          line_array[(number_array.length-1)-i] += " ";
+          line_array[(number_array.length-1)+i] += " ";
+          // if( range > 9){
+          //   line_array[(number_array.length-1)-i] += " ";
+          //   line_array[(number_array.length-1)+i] += " ";
+          // }
+        }
+      } else {
+        line_array[(number_array.length-1)-i] = " ";
+        line_array[(number_array.length-1)+i] = " ";
+        if( range > 9){
+          line_array[(number_array.length-1)-i] += " ";
+          line_array[(number_array.length-1)+i] += " ";
+        }
+      }
+    }
+    var joined_line = line_array.join("");
+    lines[j] = joined_line;
+    lines[(number_array.length*2) - 2 - j] = joined_line;
+  }
+  var pre_line = "<strong>diamond2()</strong>&#10;";
+  for(var i=0; i < lines.length; i++){
+    console.log(lines[i]);
+    lines[i] += "&#10;" //put a line break at the end of each line
+    pre_line += lines[i];
+  }
+  pre.innerHTML = pre_line;
+}
 
 // compareInt();
 // sort1();
@@ -289,5 +294,5 @@ function diamond1(){
 // evenOdd();
 // fizzbuzz();
 // multiplesOf3();
-// pyramid1();
-// diamond1();
+// pyramid();
+// diamond();

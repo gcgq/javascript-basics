@@ -1,0 +1,10 @@
+.btn a {
+  color: white;
+}
+ ul li{
+   display: inline-block;
+ }
+
+ ul li ol li{
+   display: block;
+ }
