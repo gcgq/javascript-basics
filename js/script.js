@@ -156,11 +156,11 @@ function fizzbuzz(){
   var output_str = `<strong>${fn_str}</strong>: `;
   var li = answer_list.appendChild(document.createElement('li'));
   li.innerHTML = output_str;
-  var ol = li.appendChild(document.createElement('ol'));
+  var ul = li.appendChild(document.createElement('ul'));
 
   console.log(fn_str);
   for(var i = 1; i <= 100; i++){
-    var li_str = "";
+    var li_str = `${i}: `;
     if ((i % 3) == 0) {
       li_str += "Fizz";
     }
@@ -168,7 +168,7 @@ function fizzbuzz(){
       li_str += "Buzz";
     }
     console.log(`${i}: ${li_str}`);
-    ol.appendChild(document.createElement('li')).innerHTML = li_str;
+    ul.appendChild(document.createElement('li')).innerHTML = li_str;
   }
 
   answer_list.insertBefore(li, answer_list.childNodes[0]);

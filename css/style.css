@@ -5,6 +5,12 @@
 
 #answers li{
   animation: fadein 1s;
-  overflow: auto;
-  margin: 0 5px 0 5px;
+  margin: 0 10px 0 10px;
+  display:inline-block;
+  vertical-align: top;
+}
+
+#answers li ul li,
+#answers li ol li {
+  display: block;
 }
