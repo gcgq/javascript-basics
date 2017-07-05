@@ -35,6 +35,7 @@ function sort1(){
   unsorted_array.sort(function (a, b) { return a - b; });
   output_str += unsorted_array.join(", ")
   output_str += ".";
+
   alert(console_str + output_str);
   console.log(console_str + output_str);
   li.innerHTML = html_str + output_str;
@@ -264,8 +265,12 @@ function diamond(){
 }
 
 function pyramid2(){
-  var pre = answer_list.appendChild(document.createElement('li'))
-                      .appendChild(document.createElement('pre'));
+  var fn_str = "pyramid2()";
+  var output_str = `<strong>${fn_str}</strong>: `;
+  var li = answer_list.appendChild(document.createElement('li'));
+  li.innerHTML = output_str;
+  var pre = li.appendChild(document.createElement('pre'));
+
   var range = 0;
   var number_array = [];
   var lines = [];
@@ -297,18 +302,24 @@ function pyramid2(){
     var joined_line = line_array.join("");
     lines[j] = joined_line;
   }
-  var pre_line = "<strong>diamond2()</strong>&#10;";
+  var pre_line = "";
+  console.log(fn_str);
   for(var i=0; i < lines.length; i++){
     console.log(lines[i]);
     lines[i] += "&#10;" //put a line break at the end of each line
     pre_line += lines[i];
   }
   pre.innerHTML = pre_line;
+  answer_list.insertBefore(li, answer_list.childNodes[0]);
 }
 
 function diamond2(){
-  var pre = answer_list.appendChild(document.createElement('li'))
-                      .appendChild(document.createElement('pre'));
+  var fn_str = "diamond2()";
+  var output_str = `<strong>${fn_str}</strong>: `;
+  var li = answer_list.appendChild(document.createElement('li'));
+  li.innerHTML = output_str;
+  var pre = li.appendChild(document.createElement('pre'));
+
   var range = 0;
   var number_array = [];
   var lines = [];
@@ -345,13 +356,15 @@ function diamond2(){
     lines[j] = joined_line;
     lines[(number_array.length*2) - 2 - j] = joined_line;
   }
-  var pre_line = "<strong>diamond2()</strong>&#10;";
+  var pre_line = "";
+  console.log(fn_str);
   for(var i=0; i < lines.length; i++){
     console.log(lines[i]);
     lines[i] += "&#10;" //put a line break at the end of each line
     pre_line += lines[i];
   }
   pre.innerHTML = pre_line;
+  answer_list.insertBefore(li, answer_list.childNodes[0]);
 }
 
 // function addToList(li_txt, li_content){
