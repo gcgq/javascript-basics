@@ -5,13 +5,6 @@
 
 #answers li{
   animation: fadein 1s;
-}
-
-#answers li{
-  display: inline-block;
+  overflow: auto;
   margin: 0 5px 0 5px;
-}
-
-#answers li ol li, #answers li ol li{
-  display: block;
 }
