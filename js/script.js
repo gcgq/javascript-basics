@@ -6,12 +6,14 @@ function compareInt() {
     var fn_str = "compareInt()";
     var html_str = `<strong>${fn_str}</strong>: `;
     var console_str = `${fn_str}: `;
-    var output_str =""
+    var output_str = ""
+
     if(num1 > num2){
       output_str += `${num1} is larger than ${num2}.`;
     } else {
       output_str += `${num2} is larger than ${num1}.`;
     }
+
     alert(console_str + output_str);
     console.log(console_str + output_str);
     answer_list.insertBefore( document.createElement('li'), answer_list.childNodes[0] ).innerHTML = html_str + output_str;
@@ -32,6 +34,7 @@ function sort1(){
   for(i = 0; i < input_qty; i++) {
     unsorted_array[i] = parseInt( prompt(prompt_str + " (" + (i+1) + " of " + input_qty + ")" ) );
   }
+
   unsorted_array.sort(function (a, b) { return a - b; });
   output_str += unsorted_array.join(", ")
   output_str += ".";
@@ -73,6 +76,7 @@ function sort2(){
     else {
       output_str += `${num3}, ${num2}, ${num1}.`  }
   }
+
   alert(console_str + output_str);
   console.log(console_str + output_str);
   li.innerHTML = html_str + output_str;
@@ -123,6 +127,7 @@ function largest2(){
       largest_num = input_array[i];
     }
   }
+
   html_str += output_str + `${largest_num}`;
   li.innerHTML = html_str;
   alert(console_str + output_str + `${largest_num}`);
@@ -138,6 +143,7 @@ function evenOdd() {
   var ol = li.appendChild(document.createElement('ol'));
 
   console.log(fn_str);
+
   for(var i = 0; i <= 15; i++){
     if ((i % 2) == 0) {
       li_str = `${i} is even.`;
@@ -201,11 +207,12 @@ function pyramid(){
   var output_str = `<strong>${fn_str}</strong>: `;
   var li = answer_list.appendChild(document.createElement('li'));
   li.innerHTML = output_str;
-  var pre = li.appendChild(document.createElement('pre'));
 
+  var pre = li.appendChild(document.createElement('pre'));
   var pre_line = "";
-  var number_array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   var lines = [];
+
+  var number_array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   for (var j = 0; j < number_array.length; j++) {
     line_array = [];
     for( var i = 0; i < number_array.length; i++){
@@ -234,11 +241,12 @@ function diamond(){
   var output_str = `<strong>${fn_str}</strong>: `;
   var li = answer_list.appendChild(document.createElement('li'));
   li.innerHTML = output_str;
-  var pre = li.appendChild(document.createElement('pre'));
 
+  var pre = li.appendChild(document.createElement('pre'));
   var pre_line = "";
-  var number_array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   var lines = [];
+
+  var number_array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   for (var j = 0; j < number_array.length; j++) {
     line_array = [];
     for( var i = 0; i < number_array.length; i++){
@@ -250,6 +258,7 @@ function diamond(){
         line_array[(number_array.length-1)+i] = " ";
       }
     }
+
     var joined_line = line_array.join("");
     lines[j] = joined_line;
     lines[(number_array.length*2) - 2 - j] = joined_line;
@@ -287,8 +296,8 @@ function pyramid2(){
         line_array[(number_array.length-1)-i] = `${number_array[j-i]}`;
         line_array[(number_array.length-1)+i] = `${number_array[j-i]}`;
         if( number_array[i] < 10 && range > 9){
-          line_array[(number_array.length-1)-i] += " ";
-          line_array[(number_array.length-1)+i] += " ";
+          line_array[(number_array.length-1)-i] = " " + line_array[(number_array.length-1)-i];
+          line_array[(number_array.length-1)+i] = " " + line_array[(number_array.length-1)+i];
         }
       } else {
         line_array[(number_array.length-1)-i] = " ";
@@ -318,8 +327,8 @@ function diamond2(){
   var output_str = `<strong>${fn_str}</strong>: `;
   var li = answer_list.appendChild(document.createElement('li'));
   li.innerHTML = output_str;
-  var pre = li.appendChild(document.createElement('pre'));
 
+  var pre = li.appendChild(document.createElement('pre'));
   var range = 0;
   var number_array = [];
   var lines = [];
@@ -367,9 +376,183 @@ function diamond2(){
   answer_list.insertBefore(li, answer_list.childNodes[0]);
 }
 
-// function addToList(li_txt, li_content){
-//   var li = document.createElement('li').appendChild(li_content);
-  // li.innerHTML = li_txt;
+function todays_date(){
+  today = new Date();
+  date_str = `${today.getMonth()}/${today.getDay()}/${today.getFullYear()}`;
+  console.log(date_str);
+}
+
+function leap_year_or_nah(){
+  today = new Date();
+  year = parseInt(today.getFullYear());
+  output_str = `${year} is not a leap year`;
+  if( year % 4 == 0){
+    if(year % 100 == 0  && year % 400 != 0){
+      console.log(output_str);
+      return false;
+    } else {
+      output_str = `${year} is a leap year.`;
+      console.log(output_str);
+      return true;
+    }
+  } else {
+    console.log(output_str);
+    return false;
+  }
+}
+
+function consecutive_or_nah(){
+  input_qty = 5;
+  number_array = [];
+  var nah = "not consecutive";
+  for(var i = 0; i < input_qty; i++) {
+    number_array[i] = parseInt(prompt(`Enter a number (${i+1} of ${input_qty})`));
+  }
+  for (var i = 0; i < number_array.length -1 ; i++) {
+    if (number_array[i] + 1 != number_array[i+1]) {
+      console.log(nah);
+      return false;
+    }
+  }
+  console.log("Consecutive.");
+  return true;
+}
+
+function repeats_or_nah1(){
+  var input_qty = 5;
+  var number_array = [1,2,1,4,5,6,3,8,3,5,6,3,5,6,7];
+  var output_str = "";
+  var matches={'keys':[]};
+  for (var i = 0; i < number_array.length; i++) {
+    if(matches[number_array[i]] == null){
+        matches[number_array[i]] = 1;
+        matches['keys'].push(number_array[i]);
+    } else {
+      matches[number_array[i]] += 1;
+    }
+  }
+  for(i = 0; i < matches['keys'].length; i++){
+    if( matches[matches['keys'][i]] > 1 ){
+      console.log(`${matches['keys'][i]} has ${matches[matches['keys'][i]]} repeats`);
+    }
+  }
+
+  console.log(matches);
+  return matches;
+}
+function first_element(input_ary, n){
+  if( n == null){
+    return input_ary[0];
+  } else {
+    return input_ary.slice(0,n);
+  }
+}
+
+function join_elements(){
+  var color_ary = ["Red", "Green", "White", "Black"];
+  var output_str = `"${color_ary.join(' ')}" OR "${color_ary.join(',')}" OR "${color_ary.join('+')}"`;
+  console.log(output_str);
+}
+
+function frequency(){
+  var input_ary = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3]
+  counts = {'keys':[]};
+  for (var i = 0; i < input_ary.length; i++) {
+    if(counts[input_ary[i]] == null){
+      counts['keys'].push(input_ary[i]);
+      counts[input_ary[i]] = 1;
+    } else {
+      counts[input_ary[i]] += 1;
+    }
+  }
+  var keys = counts['keys'];
+  var freq = 1;
+  var item = "";
+  for(var i = 0; i < keys.length; i++){
+    if(counts[keys[i]] > freq){
+      item = keys[i];
+      freq = counts[keys[i]];
+    }
+  }
+  var output_str = `${item} was the most frequent with ${freq}`;
+  console.log(output_str);
+  return counts;
+}
+
+function ordinals(){
+  var color = ["Blue ", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "];
+  var o = ["st","nd","rd", "th"];
+  for (var i = 0; i < color.length; i++) {
+    if(i > 2){
+      console.log(`${i+1}${o[3]} choice is ${color[i]}.`);
+    } else {
+      console.log(`${i+1}${o[i]} choice is ${color[i]}.`);
+    }
+  }
+}
+
+function find_duplicates(input_ary){
+  for (var i = 0; i < input_ary.length; i++) {
+    for (var j = 0; j < input_ary.length; j++) {
+      if (input_ary[i] == input_ary[j]) {
+        console.log(`${input_ary[j]} is a dupiicate`);
+      }
+    }
+  }
+}
+
+function is_palindrome(input_str){
+  for(var i=0; i< input_str.length / 2; i++){
+    if(input_str.charAt(i) != input_str.charAt(input_str.length-1-i)){
+      return false;
+    }
+  }
+  return true;
+}
+
+function reverse_string(input_str){
+  output_str = "";
+  for(i=input_str.length; i >=0; i--){
+    output_str += input_str.charAt(i);
+  }
+  console.log(output_str);
+  return output_str;
+}
+
+function string_slicer(input_str){
+  output_ary =[];
+  for (var i = 0; i <= input_str.length; i++) {
+    for (var j = i+1; j <= input_str.length; j++) {
+      output_ary.push(input_str.slice(i,j));
+    }
+  }
+  return output_ary;
+}
+
+function alphabetize(input_str){
+  return input_str.split("").sort().join("");
+}
+
+function second_bananas(input_array){
+  input_array.sort(function (a, b) { return a - b; });
+  return [input_array[1], input_array[input_array.length-2]];
+}
+
+// function remove_dulpicate_letters(input_str){
+//   output_str = "";
+//   for (var i = 0; i < input_str.length; i++) {
+//     for (var j = i+1; j < input_str.length; j++) {
+//       if(input_str.charAt(i) == input_str.charAt(j)){
+//         input_str = input_str.replace(input_str.charAt(j),"")
+//       }
+//     }
+//   }
+//   return input_str;
+// }
+
+// function addToList(li_label, li_child, li_content){
+//   var li = document.createElement('li');
+//   li.innerHTML = li_label;
 //   answer_list.insertBefore(li, answer_list.childNodes[0]);
 // }
 
@@ -383,3 +566,6 @@ function diamond2(){
 // multiplesOf3();
 // pyramid();
 // diamond();
+// todays_date()
+// leap_year_or_nah();
+// consecutive_or_nah();
