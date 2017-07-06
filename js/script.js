@@ -1,49 +1,55 @@
 var answer_list = document.getElementById("answers");
 
+function addToList(li_label, li_child, li_content){
+  answer_list = document.getElementById("answers");
+  var li = document.createElement('li');
+  li.innerHTML = li_label;
+  li.appendChild(document.createElement(li_child)).innerHTML = li_content;
+  answer_list.insertBefore(li, answer_list.childNodes[0]);
+}
+
+function output_strings_init(fn_name){
+  var strings ={
+    html:`<strong>${fn_name}</strong>:`,
+    console:`${fn_name}: `,
+    str: "",
+    li: document.createElement('li')
+  };
+  return strings;
+}
+
 function compareInt() {
     var num1 = parseInt( prompt("Enter a number"));
     var num2 = parseInt( prompt("Enter another number"));
-    var fn_str = "compareInt()";
-    var html_str = `<strong>${fn_str}</strong>: `;
-    var console_str = `${fn_str}: `;
-    var output_str = ""
+    var output = output_strings_init("compareInt()");
 
     if(num1 > num2){
-      output_str += `${num1} is larger than ${num2}.`;
+      output.str += `${num1} is larger than ${num2}.`;
     } else {
-      output_str += `${num2} is larger than ${num1}.`;
+      output.str += `${num2} is larger than ${num1}.`;
     }
 
-    alert(console_str + output_str);
-    console.log(console_str + output_str);
-    answer_list.insertBefore( document.createElement('li'), answer_list.childNodes[0] ).innerHTML = html_str + output_str;
+    alert(output.console + output.str);
+    console.log(output.console + output.str);
+    addToList(output.html, 'p', output.str);
 }
 
 function sort1(){
   var prompt_str = "Enter a number";
   var input_qty = prompt("How many numbers do you want to sort?");
   var unsorted_array = [];
-
-  var fn_str = "sort1()";
-  var html_str = `<strong>${fn_str}</strong> The sorted numbers are: `;
-  var console_str = `${fn_str} The sorted numbers are: `;
-  var output_str =""
-
-  var li = answer_list.appendChild(document.createElement('li'));
+  var output = output_strings_init("sort1()");
 
   for(i = 0; i < input_qty; i++) {
     unsorted_array[i] = parseInt( prompt(prompt_str + " (" + (i+1) + " of " + input_qty + ")" ) );
   }
-
   unsorted_array.sort(function (a, b) { return a - b; });
-  output_str += unsorted_array.join(", ")
-  output_str += ".";
+  output.str += unsorted_array.join(", ")
+  output.str += ".";
 
-  alert(console_str + output_str);
-  console.log(console_str + output_str);
-  li.innerHTML = html_str + output_str;
-  answer_list.insertBefore(li, answer_list.childNodes[0]);
-  // answer_list.appendChild( document.createElement('li') ).innerHTML = output_str;
+  alert(output.console + output.str);
+  console.log(output.console + output.str);
+  addToList(output.html, 'p', output.str);
 }
 
 function sort2(){
@@ -53,58 +59,47 @@ function sort2(){
   var num1 = parseInt( prompt( prompt_str ));
   var num2 = parseInt( prompt( prompt_str ));
   var num3 = parseInt( prompt( prompt_str ));
-  var fn_str = "sort2()";
-  var html_str = `<strong>${fn_str}</strong> The sorted numbers are: `;
-  var console_str = `${fn_str} The sorted numbers are: `;
-  var output_str =""
-
-  var li = answer_list.appendChild(document.createElement('li'));
+  var output = output_strings_init("sort2()");
 
   if (num1 < num2 && num1 < num3){ // if num1 is smallest
     if (num2 < num3) {
-      output_str += `${num1}, ${num2}, ${num3}.`  }
+      output.str += `${num1}, ${num2}, ${num3}.`  }
     else {
-      output_str += `${num1}, ${num3}, ${num2}.`  }
+      output.str += `${num1}, ${num3}, ${num2}.`  }
   } else if (num2 < num1 && num2 < num3) { // if num2 is smallest
     if (num1 < num3) {
-      output_str += `${num2}, ${num1}, ${num3}.`  }
+      output.str += `${num2}, ${num1}, ${num3}.`  }
     else {
-      output_str += `${num2}, ${num3}, ${num1}.`  }
+      output.str += `${num2}, ${num3}, ${num1}.`  }
   } else { //else num3 is smallest
     if (num1 < num2) {
-      output_str += `${num3}, ${num1}, ${num2}.`  }
+      output.str += `${num3}, ${num1}, ${num2}.`  }
     else {
-      output_str += `${num3}, ${num2}, ${num1}.`  }
+      output.str += `${num3}, ${num2}, ${num1}.`  }
   }
 
-  alert(console_str + output_str);
-  console.log(console_str + output_str);
-  li.innerHTML = html_str + output_str;
-  answer_list.insertBefore(li, answer_list.childNodes[0])
-  // answer_list.appendChild(document.createElement('li')).innerHTML = html_str;
+  alert(output.console + output.str);
+  console.log(output.console + output.str);
+  li.innerHTML = output.html + output.str;
+  addToList(output.html, 'p', output.str);
 }
 
 function largest1(){
   var input_array = [];
 
-  var fn_str = "largest1()";
   var prompt_str = "Enter a number";
-  var html_str = `<strong>${fn_str}</strong> `;
-  var console_str = `${fn_str} `;
-  var output_str = "The largest number is: ";
-
-  var li = answer_list.appendChild(document.createElement('li'));
+  var output = output_strings_init("largest1()");
+  output.str = "The largest number is: ";
 
   for(var i = 0; i < 5; i++){
     input_array[i] = parseInt( prompt(prompt_str + " (" + (i+1) + " of 5)") );
   }
   input_array.sort(function (a, b) { return a - b; }).reverse();
 
-  html_str += output_str + `${input_array[0]}`;
-  li.innerHTML = html_str;
-  alert(console_str + output_str + `${input_array[0]}`);
-  console.log(console_str + output_str + `${input_array[0]}`);
-  answer_list.insertBefore(li, answer_list.childNodes[0]);
+  output.str += input_array[0];
+  alert(output.console + output.str);
+  console.log(output.console + output.str);
+  addToList( output.html, 'p', output.str);
 }
 
 //again, a different function closer to what was probably expected
@@ -138,7 +133,8 @@ function largest2(){
 function evenOdd() {
   var fn_str = "evenOdd()";
   var output_str = `<strong>${fn_str}</strong>: `;
-  var li = answer_list.appendChild(document.createElement('li'));
+  // var li = answer_list.appendChild(document.createElement('li'));
+  var li = document.createElement('li');
   li.innerHTML = output_str;
   var ol = li.appendChild(document.createElement('ol'));
 
@@ -152,15 +148,16 @@ function evenOdd() {
     }
     console.log(li_str);
     ol.appendChild(document.createElement('li')).innerHTML = li_str;
-  }
 
-  answer_list.insertBefore(li, answer_list.childNodes[0]);
+  }
+  addToList(output_str, 'ol', ol.innerHTML);
+  // answer_list.insertBefore(li, answer_list.childNodes[0]);
 }
 
 function fizzbuzz(){
   var fn_str = "fizzbuzz()";
   var output_str = `<strong>${fn_str}</strong>: `;
-  var li = answer_list.appendChild(document.createElement('li'));
+  var li = document.createElement('li');
   li.innerHTML = output_str;
   var ul = li.appendChild(document.createElement('ul'));
 
@@ -177,7 +174,8 @@ function fizzbuzz(){
     ul.appendChild(document.createElement('li')).innerHTML = li_str;
   }
 
-  answer_list.insertBefore(li, answer_list.childNodes[0]);
+  // answer_list.insertBefore(li, answer_list.childNodes[0]);
+  addToList(output_str, 'ul', ul.innerHTML);
 }
 
 function multiplesOf3(){
@@ -378,13 +376,14 @@ function diamond2(){
 
 function todays_date(){
   today = new Date();
-  date_str = `${today.getMonth()}/${today.getDay()}/${today.getFullYear()}`;
+  date_str = `${('0'+today.getMonth()).slice(-2)}/${('0'+today.getDay()).slice(-2)}/${today.getFullYear()}`;
   console.log(date_str);
 }
 
-function leap_year_or_nah(){
+function leap_year_or_nah(year){
   today = new Date();
-  year = parseInt(today.getFullYear());
+  //year = parseInt(today.getFullYear());
+  year = year;
   output_str = `${year} is not a leap year`;
   if( year % 4 == 0){
     if(year % 100 == 0  && year % 400 != 0){
@@ -401,12 +400,14 @@ function leap_year_or_nah(){
   }
 }
 
-function consecutive_or_nah(){
+function consecutive_or_nah(input_ary){
   input_qty = 5;
-  number_array = [];
+  number_array = input_ary;
   var nah = "not consecutive";
-  for(var i = 0; i < input_qty; i++) {
+  if (number_array == null){
+    for(var i = 0; i < input_qty; i++) {
     number_array[i] = parseInt(prompt(`Enter a number (${i+1} of ${input_qty})`));
+    }
   }
   for (var i = 0; i < number_array.length -1 ; i++) {
     if (number_array[i] + 1 != number_array[i+1]) {
@@ -419,7 +420,7 @@ function consecutive_or_nah(){
 }
 
 function repeats_or_nah1(){
-  var input_qty = 5;
+  // var input_qty = 5;
   var number_array = [1,2,1,4,5,6,3,8,3,5,6,3,5,6,7];
   var output_str = "";
   var matches={'keys':[]};
@@ -440,6 +441,17 @@ function repeats_or_nah1(){
   console.log(matches);
   return matches;
 }
+
+function check_multiple(array){
+  array.sort();
+  for (var i = 0; i < array.length-1; i++) {
+    if( array[i] === array[i+1] ){
+      return true;
+    }
+  }
+  return false;
+}
+
 function first_element(input_ary, n){
   if( n == null){
     return input_ary[0];
@@ -456,7 +468,11 @@ function join_elements(){
 
 function frequency(){
   var input_ary = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3]
-  counts = {'keys':[]};
+  var counts = {'keys':[]};
+  var freq = 1;
+  var item = "";
+  var output_str = `${item} was the most frequent with ${freq}`;
+
   for (var i = 0; i < input_ary.length; i++) {
     if(counts[input_ary[i]] == null){
       counts['keys'].push(input_ary[i]);
@@ -465,16 +481,14 @@ function frequency(){
       counts[input_ary[i]] += 1;
     }
   }
+
   var keys = counts['keys'];
-  var freq = 1;
-  var item = "";
   for(var i = 0; i < keys.length; i++){
     if(counts[keys[i]] > freq){
       item = keys[i];
       freq = counts[keys[i]];
     }
   }
-  var output_str = `${item} was the most frequent with ${freq}`;
   console.log(output_str);
   return counts;
 }
@@ -493,7 +507,7 @@ function ordinals(){
 
 function find_duplicates(input_ary){
   for (var i = 0; i < input_ary.length; i++) {
-    for (var j = 0; j < input_ary.length; j++) {
+    for (var j = i+1; j < input_ary.length; j++) {
       if (input_ary[i] == input_ary[j]) {
         console.log(`${input_ary[j]} is a dupiicate`);
       }
@@ -538,23 +552,17 @@ function second_bananas(input_array){
   return [input_array[1], input_array[input_array.length-2]];
 }
 
-// function remove_dulpicate_letters(input_str){
-//   output_str = "";
-//   for (var i = 0; i < input_str.length; i++) {
-//     for (var j = i+1; j < input_str.length; j++) {
-//       if(input_str.charAt(i) == input_str.charAt(j)){
-//         input_str = input_str.replace(input_str.charAt(j),"")
-//       }
-//     }
-//   }
-//   return input_str;
-// }
-
-// function addToList(li_label, li_child, li_content){
-//   var li = document.createElement('li');
-//   li.innerHTML = li_label;
-//   answer_list.insertBefore(li, answer_list.childNodes[0]);
-// }
+function remove_dulpicate_letters(input_str){
+  output_str = input_str.split("");
+  for (var i = 0; i < output_str.length; i++) {
+    for (var j = i+1; j < output_str.length; j++) {
+      if(output_str[i] == output_str[j]){
+        output_str[j] = null;
+      }
+    }
+  }
+  return output_str.join("");
+}
 
 // compareInt();
 // sort1();
