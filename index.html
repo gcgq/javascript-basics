@@ -5,7 +5,8 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/skeleton.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" defer charset="utf-8"></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"defer charset="utf-8"></script>
+    <script type="text/javascript" src="js/script.js" defer charset="utf-8"></script>
     <title>Javascript Stuff</title>
   </head>
   <body>
@@ -40,9 +41,95 @@
             <a href="#" onclick="diamond()">diamond()</a>
             <a href="#" onclick="diamond2()">diamond2()</a>
           </li>
+          <li>
+            <a href="#" onclick="consecutive_or_nah()">consecutive_or_nah()</a>
+          </li>
+          <li>
+            <a href="#" onclick="repeats_or_nah()">repeats_or_nah()</a>
+          </li>
+          <li>
+            <a href="#" onclick="check_multiple()">check_multiple()</a>
+          </li>
+          <li>
+            <a href="#" onclick="first_element()">first_element()</a>
+          </li>
+          <li>
+            <a href="#" onclick="join_elements()">join_elements()</a>
+          </li>
+          <li>
+            <a href="#" onclick="frequency()">frequency()</a>
+          </li>
+          <li>
+            <a href="#" onclick="ordinals()">ordinals()</a>
+          </li>
+          <li>
+            <a href="#" onclick="find_duplicates()">find_duplicates()</a>
+          </li>
+          <li>
+            <a href="#" onclick="is_palindrome()">is_palindrome()</a>
+          </li>
+          <li>
+            <a href="#" onclick="reverse_string()">reverse_string()</a>
+          </li>
+          <li>
+            <a href="#" onclick="string_slicer()">string_slicer()</a>
+          </li>
+          <li>
+            <a href="#" onclick="alphabetize()">alphabetize()</a>
+          </li>
+          <li>
+            <a href="#" onclick="second_bananas()">second_bananas()</a>
+          </li>
+          <li>
+            <a href="#" onclick="remove_dulpicate_letters()">remove_dulpicate_letters()</a>
+          </li>
+          <li>
+            <a href="#" onclick="getFormValue()">getFormValue()</a>
+          </li>
         </ol>
       </div>
       <div class="ten columns">
+        <div class="" id="">
+          <p id='change-this-text'>​JavaScript Exercises - w3resource ​</p> ​
+          <div> ​
+            <button id="jsstyle" onclick="js_style()" ​>​Style​</button>
+            <button id="jsstyle2" onclick="js_style_JQ()" ​>​Style (jQuery)​</button> ​
+          </div>
+        </div>
+        <hr>
+        <div class="">
+          <form id="form1" onsubmit="getFormValue()">
+            First Name:<input type="text" name="fn" value="David"><br>
+            Last Name:<input type="text" name="ln" value="Beckham"><br>
+            <input type="submit" name="" value="submit">
+          </form>
+          <form id="form2">
+            First Name:<input type="text" name="fn" value="David"><br>
+            Last Name:<input type="text" name="ln" value="Beckham"><br>
+            <input type="submit" name="" value="submit (jQuery)">
+          </form>
+        </div>
+        <hr>
+        <div class="">
+          <a href="#" onmouseout="lowlight()" onmouseenter="highlight()">​Hover Here</a>​
+          <a href="#" id="highlightstuff">​Hover Here (jQuery)</a>​
+          <p>
+            The <b>skills</b> and experience that students achieve at ​<b>Coding
+            Temple</b> take them a long way. We offer small classes, so students are able
+            to have a more one on one interaction with our teachers. Our curriculum is
+            designed to make students feel confident and be successful in the
+            <b>workforce​</b> once they have completed our course.
+          </p>
+        </div>
+        <hr>
+        <div class="">
+          <p>
+            <a id="w3r" target="_self" type="text/html" hreflang="en-us" rel="nofollow" href="http://www.w3resource.com/">w3resource</a>
+            <button onclick="getAttributes()">Click here to get attributes of that w3resource link over there.</button>
+            <button id="attribute-button">jQuery version of that other button over there.</button>
+          </p>
+        </div>
+
         <ul id="answers"></ul>
       </div>
     </div>
