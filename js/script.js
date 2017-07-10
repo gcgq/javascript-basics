@@ -548,22 +548,30 @@ function find_duplicates(input_ary){
 
 function is_palindrome(input_str){
   var output = output_strings_init("is_palindrome()");
-  for(var i=0; i< input_str.length / 2; i++){
-    if(input_str.charAt(i) != input_str.charAt(input_str.length-1-i)){
+  var input = input_str;
+  while(input == null || input == ""){
+    input = prompt("enter a palindrome");
+  }
+  output.str = `"${input}" is `;
+  for(var i=0; i< input.length / 2; i++){
+    if(input.charAt(i) != input.charAt(input.length-1-i)){
+      output.str += "not a palindrome";
+      addToList(output.html,'p', output.str);
       return false;
     }
   }
+  output.str += "a palindrome";
+  addToList(output.html,'p', output.str);
   return true;
 }
 
 function reverse_string(input_str){
   var output = output_strings_init("reverse_string()");
-  output_str = "";
   for(i=input_str.length; i >=0; i--){
-    output_str += input_str.charAt(i);
+    output.str += input_str.charAt(i);
   }
-  console.log(output_str);
-  return output_str;
+  console.log(output.str);
+  return output.str;
 }
 
 function string_slicer(input_str){
